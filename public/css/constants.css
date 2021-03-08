@@ -1,0 +1,12 @@
+/* General */
+:root {
+  --spotify-color: #1ED760;
+  --primary-color: #FF7A7A;
+  --cta-color: #FE9D65;
+  --light-color: #FFFFFF;
+  --dark-color: #342F2F;
+}
+
+.hide {
+  display: none;
+}

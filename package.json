@@ -1,0 +1,42 @@
+{
+  "name": "combinify",
+  "version": "1.0.0",
+  "description": "Progressive web apps",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vincentvanleeuwen/progressive-web-apps-2021.git"
+  },
+  "keywords": [
+    "progressive",
+    "node",
+    "javascript",
+    "handlebars",
+    "spotify"
+  ],
+  "author": "Vincent van Leeuwen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vincentvanleeuwen/progressive-web-apps-2021/issues"
+  },
+  "homepage": "https://github.com/Vincentvanleeuwen/progressive-web-apps-2021#readme",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2"
+  }
+}
