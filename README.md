@@ -1,54 +1,104 @@
-# Progressive Web Apps @cmda-minor-web · 20-21
+# **Combinify**
+### Progressive Web Apps @cmda-minor-web 2020 - 2021
 
-In this course we will convert the client side web application previously made Web App From Scratch into a server side rendered application. We also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately we are going to implement a series of optimisations to improve the performance of the application.  
+
+https://combinify.netlify.app/
+
+Combinify is a playlist creating application that lets you create a combined playlist of multiple people their top songs.
+This application will be made without the use of Javascript Frameworks.
+In this project you will simply be able to create a playlist from yourself. I'm not able to create a realtime application yet because this project is focussing mainly on vanilla javascript. I'm planning to add the feature of adding your friends playlists in the future.
+
+Check out the prototype @ https://xd.adobe.com/view/19b3c8d4-05bd-4ac2-ad30-a6d7686fc173-4ce0/?fullscreen&hints=off
 
 ## Learning goals
-- _You understand the difference between client side and server side rendering and you can apply server side rendering
-in your application_
-- _You understand how a Service Worker works and you can implement it in your application._
-- _You understand how the critical render path works and how you can optimize it for a better runtime and / or perceived performance._
 
-[Rubric with learning goals](https://icthva.sharepoint.com/:x:/r/sites/FDMCI_EDU__CMD20_21_Minor_Web_5i7j73jt/_layouts/15/Doc.aspx?sourcedoc=%7B276F53A7-2531-4006-8AD2-08C9A82D3A11%7D&file=PWA%202021%20Rubric.xlsx&action=edit&mobileredirect=true&wdPreviousSession=92686bea-446f-40e3-9303-33fa3f832b82&wdOrigin=TEAMS-ELECTRON.teams.undefined)
+* _Being able to change a clientside application into a serverside application_
 
-## Program
+## Installation guide
 
-### Week 1 - Server Side Rendering 📡
+```jsx
+ cd C:/DesiredMap
+ git clone https://github.com/Vincentvanleeuwen/progressive-web-apps-2021.git
+```
 
-Goal: Render web pages server side
+For security reasons, the spotify key has not been included, feel free to create your own for free.
 
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-1.md)    
-[Server Side Rendering - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2021-server-side-rendering.pdf)  
+[Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications)
+> Create an app
 
+> Copy the Client ID, Client Secret, and Redirect URL
 
-### Week 2 - Progressive Web App 🚀
+> Create an .env in the main folder
 
-Goals: Convert application to a Progressive Web App
+```jsx
+// .env
+CLIENTID=PLACE-CLIENT-ID-HERE;
+CLIENTSECRET=PLACE-CLIENT-SECRET-HERE
+REDIRECTURL=
+```
 
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-2.md)  
-[Progressive Web Apps - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2020-progressive-web-apps.pdf)
+To run the project locally you will need nodejs.
+```jsx
 
-
-### Week 3 - Critical Rendering Path 📉 
-
-Doel: Optimize the Critical Rendering Path   
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-3.md)  
-[Critical Rendering Path - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2020-critical-rendering-path.pdf)
-
-
-<!-- Add a link to your live demo in Github Pages 🌐-->
-
-<!-- ☝️ replace this description with a description of your own work -->
-
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-
-<!-- Maybe a table of contents here? 📚 -->
-
-<!-- How about a section that describes how to install this project? 🤓 -->
+ // Go to the correct folder
+ cd C:/DesiredMap/web-app-from-scratch-2021
+ 
+ // Run the server 
+ npm run test
+```
+You can now preview the project when visiting http://localhost:3000
 
 <!-- ...but how does one use this project? What are its features 🤔 -->
+## Features
+A playlist is created based on each of the people's top tracks.
 
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
+The user will be able to set the amount of songs or playlist length and a playlist name to start.
 
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+You can add however many other profiles as you'd like.
 
+I will allow users to delete songs from the playlist.
+
+## External Data
+
+The [Spotify API](https://developer.spotify.com/documentation/web-api/) will be used in this project to get a list of a couple people's top tracks. 
+
+There are four ways of authorization spotify. 
+Refreshable user authorization like
+- [Authorization Code Flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow)
+- [Authorization Code Flow With Proof Key for Code Exchange (PKCE)](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce)
+- [Client Credentials Flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow)
+
+or Temporary user authorization
+- [Implicit Grant](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow)
+
+Because I'm using node js now, I will be using the authorization code flow from spotify.
+```jsx
+const options = {
+  headers: {
+    'Authorization': 'Bearer ' + _token,
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  json: true
+}
+  fetch('https://api.spotify.com/v1/me/top/tracks', options).then(response => {
+    return response.json()
+  }).then(data => {
+    console.log('data', data); // Returns an object with 20 tracks in it
+  })
+```
+
+Check out the [Reference](https://developer.spotify.com/documentation/web-api/reference/) page for further explanation on what links to get what data from.
+
+
+## Checklist
+- [x] Connect to the spotify API
+- [x] Get the top tracks of the logged in user
+- [x] Create a playlist
+- [x] Add songs to the playlist
+- [x] Set playlist name
+- [x] Set max amount of songs
+- [ ] Add more profiles
+- [ ] Add songs to a playlist
+- [ ] Delete songs from a playlist
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+
