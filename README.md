@@ -34,12 +34,14 @@ For security reasons, the spotify key has not been included, feel free to create
 // .env
 CLIENTID=PLACE-CLIENT-ID-HERE;
 CLIENTSECRET=PLACE-CLIENT-SECRET-HERE
-REDIRECTURL=
+REDIRECTURL=http://localhost:3000/callback
 ```
 
 To run the project locally you will need nodejs.
 ```jsx
-
+ // Install dependencies
+ npm i
+ 
  // Go to the correct folder
  cd C:/DesiredMap/web-app-from-scratch-2021
  
