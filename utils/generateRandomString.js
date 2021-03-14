@@ -3,6 +3,7 @@
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
+
 const randomString = (length) => {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -13,4 +14,4 @@ const randomString = (length) => {
   return text;
 }
 
-module.exports= { randomString }
+module.exports = { randomString }

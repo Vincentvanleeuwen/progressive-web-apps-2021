@@ -8,7 +8,8 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "nodemon app.js"
+    "test": "nodemon app.js",
+    "build": "node app.js"
   },
   "repository": {
     "type": "git",

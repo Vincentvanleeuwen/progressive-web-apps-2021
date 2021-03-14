@@ -7,19 +7,30 @@
   <meta http-equiv="X-UA-Compatible"
         content="ie=edge">
 
-  {{!--  Default style--}}
-  <link href="/public/css/constants.css"
+  {{!--  Fonts --}}
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  {{!--  Default styles--}}
+  <link href="/css/constants.css"
+        rel="stylesheet">
+  <link href="/css/generic.css"
         rel="stylesheet">
 
   {{!--  Page Specific style--}}
   <link rel="stylesheet"
-        href="/public/styles/{{ style }}">
+        href="/css/{{ style }}">
 
-  <title>{{ title }}</title>
+  <title> Combinify </title>
 
 </head>
 
 <body>
+  {{!--Background SVG --}}
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-bg" width="375" height="812" viewBox="0 0 375 812">
+    <path id="Path_1" data-name="Path 1" d="M0,0H375S228.434,145.474,134.684,348.474,0,812,0,812Z" fill="#ff7a7a"/>
+  </svg>
 
   {{> navigation }}
 
