@@ -40,30 +40,6 @@ app.use(express.static(__dirname + '/public'))
   .use('/', login)
   .use('/callback', callback)
   .use('/create', create)
-// app.get('/refresh_token', function(req, res) {
-//
-//   // requesting access token from refresh token
-//   let refresh_token = req.query.refresh_token;
-//   const authOptions = {
-//     url: 'https://accounts.spotify.com/api/token',
-//     headers: { 'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64')) },
-//     form: {
-//       grant_type: 'refresh_token',
-//       refresh_token: refresh_token
-//     },
-//     json: true
-//   };
-//
-//   request.post(authOptions, function(error, response, body) {
-//     if (!error && response.statusCode === 200) {
-//       let access_token = body.access_token;
-//       res.send({
-//         'access_token': access_token
-//       });
-//     }
-//   });
-// });
-
 
 console.log(`Listening on ${port}`);
 app.listen(port);
