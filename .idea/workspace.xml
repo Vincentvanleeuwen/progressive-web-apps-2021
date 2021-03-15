@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3796739f-637a-4702-8788-80c0fb321e89" name="Default Changelist" comment="" />
+    <list default="true" id="3796739f-637a-4702-8788-80c0fb321e89" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/authorizeSpotify.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/authorizeSpotify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/fetchData.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/fetchData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/toggleLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/toggleLogin.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,15 +45,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\public\js" />
-      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\public\css" />
-      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\views\partials" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\utils" />
       <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\views\partials" />
       <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\views\layouts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\public" />
+      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\public\js" />
+      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\public\css" />
+      <recent name="D:\School\HvA\Minor\progressive-web-apps-2021\views\partials" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -64,7 +70,7 @@
       <workItem from="1615294424193" duration="10311000" />
       <workItem from="1615547061557" duration="611000" />
       <workItem from="1615725339703" duration="5306000" />
-      <workItem from="1615813884020" duration="4393000" />
+      <workItem from="1615813884020" duration="6101000" />
     </task>
     <servers />
   </component>
