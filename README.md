@@ -39,12 +39,13 @@ REDIRECTURL=http://localhost:3000/callback
 
 To run the project locally you will need nodejs.
 ```jsx
- // Install dependencies
- npm i
+
  
  // Go to the correct folder
- cd C:/DesiredMap/web-app-from-scratch-2021
+ cd C:/{DesiredMap}/progressive-web-apps-2021
  
+  // Install dependencies
+ npm i
  // Run the server 
  npm run test
 ```
