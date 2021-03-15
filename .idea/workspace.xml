@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3796739f-637a-4702-8788-80c0fb321e89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -67,7 +67,7 @@
       <workItem from="1615294424193" duration="10311000" />
       <workItem from="1615547061557" duration="611000" />
       <workItem from="1615725339703" duration="5306000" />
-      <workItem from="1615813884020" duration="975000" />
+      <workItem from="1615813884020" duration="1293000" />
     </task>
     <servers />
   </component>
@@ -79,5 +79,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="738" y="357" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615815057430" />
+    <state x="632" y="224" key="SettingsEditor" timestamp="1615815392506">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="632" y="224" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615815392506" />
   </component>
 </project>
