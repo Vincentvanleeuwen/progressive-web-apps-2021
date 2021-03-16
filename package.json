@@ -9,7 +9,11 @@
   },
   "scripts": {
     "test": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "prebuild:css": "rimraf \"public/css\"",
+    "prebuild:js": "rimraf \"public/js\"",
+    "build:css": "node ./build_scripts/build-css.js",
+    "build:js": "node ./build_scripts/build-js.js"
   },
   "repository": {
     "type": "git",
@@ -30,13 +34,19 @@
   "homepage": "https://github.com/Vincentvanleeuwen/progressive-web-apps-2021#readme",
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.7"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.1",
+    "path": "^0.12.7",
     "querystring": "^0.2.1",
     "request": "^2.88.2"
   }

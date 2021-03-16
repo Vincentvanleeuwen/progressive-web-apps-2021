@@ -23,26 +23,30 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // Require the routes
-const login = require('./routes/login');
-const callback = require('./routes/callback');
-const create = require('./routes/create');
+const login = require('./docs/routes/login');
+const callback = require('./docs/routes/callback');
+// const create = require('./docs/routes/create');
 
 
 // Assign handlebars as the view engine
 app.set('view engine', 'hbs');
+app.set('views', __dirname + '/docs/views')
 app.engine('hbs', handlebars({
   extname: 'hbs',
   defaultLayout: 'main',
-  layoutsDir: __dirname + '/views/layouts',
-  partialsDir: __dirname + '/views/partials',
+  // layoutsDir: __dirname + '/views/layouts',
+  // partialsDir: __dirname + '/views/partials',
+
 }))
+
+
 
 app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser())
   .use('/', login)
   .use('/callback', callback)
-  .use('/create', create)
+  // .use('/create', create)
 
 console.log(`Listening on ${port}`);
 app.listen(port);

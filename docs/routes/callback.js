@@ -49,7 +49,12 @@ router.get('/', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
-
+          // res.render('create', {body})
+          res.render('create', {
+            layout: 'main',
+            name: body.display_name,
+            img: body.images[0].url ? body.images[0].url : 'placeholder.png'
+          })
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -58,7 +63,7 @@ router.get('/', function(req, res) {
         //     access_token: access_token,
         //     refresh_token: refresh_token
         //   }));
-        res.redirect('create')
+        // res.redirect('create')
       } else {
         res.redirect('/#' +
           querystring.stringify({

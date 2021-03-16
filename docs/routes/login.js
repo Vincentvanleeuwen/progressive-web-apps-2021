@@ -6,8 +6,7 @@ const querystring = require('querystring');
 router.get('/', (req, res) => {
 
   res.render('login', {
-    layout: 'main',
-    style: 'login.css'
+    layout: 'main'
   });
 
 });
