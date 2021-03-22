@@ -53,7 +53,6 @@ const restructureData = (data) => {
 // Change song object structure.
 const restructureSongs = (data) => {
   let songs = []
-  console.log(data)
   if(data.length < 1) {
     return;
   }

@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
     return
   }
 
-
   res.render('create', {
     layout: 'main',
     name: req.session.user.name,
@@ -21,7 +20,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
   const playlistRef = firebase.database().ref('playlists/').child(`${req.body.playlist}`)
-
 
   const options = {
     method: 'POST',

@@ -19,8 +19,8 @@ globalRef.on('value', function (snap) {
         res.redirect('/')
         return
       }
-      const playlistRef = firebase.database().ref('playlists/').child(`${playlist}`)
 
+      const playlistRef = firebase.database().ref('playlists/').child(`${playlist}`)
       playlistRef.on('value', (snap) => {
 
         let snapVals = Object.values(snap.val())[0]
@@ -36,20 +36,32 @@ globalRef.on('value', function (snap) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-
           let filtered = deleteColumns(body)
 
-          req.session.user.songs = restructureSongs(filtered);
+          const songsRef = firebase.database().ref(`playlists/${playlist}/songs`)
 
-          req.session.save();
-          
+          songsRef.on('value', (snap) => {
+            if(!snapVals.songs) {
+              playlistRef.update({
+                songs: restructureSongs(filtered)
+              })
+            } else {
+              restructureSongs(filtered).forEach(song => {
+                songsRef.update(song)
+              })
+            }
+          })
+
+
+
+
           res.render('playlist', {
             layout: 'main',
             name: req.session.user.name,
             image: req.session.user.image,
             playlistTitle: playlist,
             playlistUrl: snapVals.url,
-            songs: req.session.user.songs
+            songs: snap.val().songs
           });
 
         });
@@ -61,12 +73,16 @@ globalRef.on('value', function (snap) {
         res.redirect('/')
         return
       }
-
       let uris = ""
-
-      req.session.user.songs.map(song => {
-        uris = uris + song.uri + ","
+      const playlistRef = firebase.database().ref(`playlists/${playlist}`)
+      playlistRef.on('value', (snap) => {
+        snap.val().songs.map(song => {
+          uris = uris + song.uri + ","
+        })
       })
+
+      console.log('post songs', uris)
+
       const options = {
         method: 'POST',
         url: `https://api.spotify.com/v1/playlists/${req.session.playlistId}/tracks?uris=${uris}`,
