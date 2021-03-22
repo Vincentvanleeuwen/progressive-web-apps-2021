@@ -26,7 +26,7 @@ const restructureData = (data) => {
     displayName = data[0][1];
 
   // If a user has no image, set placeholder image
-  let spotifyImg = data[2][1].length === 0 ? './img/placeholder.png' : data[2][1][0].url
+  let spotifyImg = data[2][1].length === 0 ? '../../public/img/placeholder.png' : data[2][1][0].url
 
   return data.reduce((acc) => {
 
