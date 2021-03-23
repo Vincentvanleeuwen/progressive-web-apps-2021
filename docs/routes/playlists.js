@@ -10,6 +10,9 @@ globalRef.on('value', function (snap) {
   if(!playlists) {
     return
   }
+  // do regex for routes with spacebar.
+  // spacebar -> -
+  // e.g. Cool playlist -> Cool-playlist
   let playlistKeys = Object.keys(playlists)
   playlistKeys.forEach(playlist => {
 

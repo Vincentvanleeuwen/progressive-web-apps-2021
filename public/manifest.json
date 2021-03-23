@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "background_color": "#342F2F",
   "display": "standalone",
   "scope": "/",
@@ -23,7 +23,7 @@
       "name": "Create a playlist",
       "short_name": "Create",
       "description": "Directly create a new playlist",
-      "url": "/create?source=pwa",
+      "url": "/create",
       "icons": [{ "src": "/img/c192x192.png", "sizes": "192x192" }]
     }
   ],
