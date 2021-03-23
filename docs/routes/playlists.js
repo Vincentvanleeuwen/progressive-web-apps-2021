@@ -55,16 +55,13 @@ globalRef.on('value', function (snap) {
             }
           })
 
-
-
-
           res.render('playlist', {
             layout: 'main',
             name: req.session.user.name,
             image: req.session.user.image,
             playlistTitle: playlist,
             playlistUrl: snapVals.url,
-            songs: snap.val().songs
+            songs: restructureSongs(filtered)
           });
 
         });

@@ -1,29 +1,14 @@
-var CACHE_NAME = 'combinify-cache-v2';
-var urlsToCache = [
-  '/',
-  '/home',
-  '/create',
-  '/css/index.css',
-  '/js/bundle.min.js'
-];
-const OFFLINE_URL = '../offline.html';
+var CACHE_NAME = 'combinify-cache-v3';
 
 // Install the service worker
 self.addEventListener('install', event => {
 
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-    .then(cache => {
-      console.log('Service Worker: Caching Files')
-      return cache.addAll(urlsToCache)
-    }).then(() => self.skipWaiting())
-  );
+  console.log('Installed Service Worker')
 
 });
 
 self.addEventListener('activate', event => {
-  
+
   // Tell the active service worker to take control of the page immediately.
   self.clients.claim();
 
@@ -38,18 +23,16 @@ self.addEventListener('activate', event => {
       );
     })
   )
-
 });
 
 
 self.addEventListener('fetch', event =>{
 
-  // skip the request. if request is not made with http protocol
-  if (event.request.method !== 'GET') return event.respondWith(fetch(event.request));
-
+  // Cache each page upon visiting
   event.respondWith(
     caches.match(event.request)
     .then((response) => {
+
       // Cache hit - return response
       if (response) {
         return response;
@@ -75,7 +58,7 @@ self.addEventListener('fetch', event =>{
                   return response;
                 }
               )
-            })
+    })
   );
 });
 
