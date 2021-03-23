@@ -1,52 +1,52 @@
-var CACHE_NAME = 'combinify-cache-v1';
+var CACHE_NAME = 'combinify-cache-v2';
 var urlsToCache = [
   '/',
+  '/home',
+  '/create',
   '/css/index.css',
   '/js/bundle.min.js'
 ];
 const OFFLINE_URL = '../offline.html';
 
-self.addEventListener('install', function(event) {
+// Install the service worker
+self.addEventListener('install', event => {
+
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
-    .then(function(cache) {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
-    })
+    .then(cache => {
+      console.log('Service Worker: Caching Files')
+      return cache.addAll(urlsToCache)
+    }).then(() => self.skipWaiting())
   );
-  self.skipWaiting();
+
 });
 
-self.addEventListener('activate', function(event) {
-
-  var cacheAllowlist = ['combinify-cache-v1'];
-
-  event.waitUntil((async () => {
-
-    if ('navigationPreload' in self.registration) {
-      await self.registration.navigationPreload.enable();
-    }
-
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheAllowlist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  }));
-
+self.addEventListener('activate', event => {
+  
   // Tell the active service worker to take control of the page immediately.
   self.clients.claim();
 
+  event.waitUntil(
+    // Check for old caches, delete if old.
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames
+          .map(cacheName => {
+            if(cacheName !== CACHE_NAME) return caches.delete(cacheName)
+          })
+      );
+    })
+  )
+
 });
 
 
-self.addEventListener('fetch', function(event) {
-  if (!(event.request.url.indexOf('http') === 0)) return; // skip the request. if request is not made with http protocol
+self.addEventListener('fetch', event =>{
+
+  // skip the request. if request is not made with http protocol
+  if (event.request.method !== 'GET') return event.respondWith(fetch(event.request));
+
   event.respondWith(
     caches.match(event.request)
     .then((response) => {
@@ -55,28 +55,27 @@ self.addEventListener('fetch', function(event) {
         return response;
       }
 
-      return fetch(event.request).then(
-        (response) => {
-          // Check if we received a valid response
-          if(!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
+      return fetch(event.request)
+              .then(
+                response => {
+                  // Check if we received a valid response
+                  if(!response || response.status !== 200 || response.type !== 'basic') {
+                    return response;
+                  }
 
-          // IMPORTANT: Clone the response. A response is a stream
-          // and because we want the browser to consume the response
-          // as well as the cache consuming the response, we need
-          // to clone it so we have two streams.
-          var responseToCache = response.clone();
+                  // Clone the response
+                  var responseToCache = response.clone();
 
-          caches.open(CACHE_NAME)
-          .then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+                  // Cache the page
+                  caches.open(CACHE_NAME)
+                  .then((cache) => {
+                    cache.put(event.request, responseToCache);
+                  });
 
-          return response;
-        }
-      );
-    })
+                  return response;
+                }
+              )
+            })
   );
 });
 

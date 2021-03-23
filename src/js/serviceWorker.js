@@ -20,20 +20,25 @@ butInstall.addEventListener('click', async () => {
   divInstall.classList.toggle('hidden', true);
 });
 
-
+// If service worker is supported
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('../sw.js').then(function(reg) {
 
-    if(reg.installing) {
-      console.log('Service worker installing');
-    } else if(reg.waiting) {
-      console.log('Service worker installed');
-    } else if(reg.active) {
-      console.log('Service worker active');
-    }
+  // Make sure page is loaded
+  window.addEventListener('load', () => {
 
-  }).catch(function(error) {
-    // registration failed
-    console.log('Registration failed with ' + error);
-  });
+    // Register the service worker
+    navigator.serviceWorker
+    .register('../sw.js')
+    .then(reg => {
+
+      if(reg.installing) {
+        console.log('Service worker installing');
+      } else if(reg.waiting) {
+        console.log('Service worker installed');
+      } else if(reg.active) {
+        console.log('Service worker active');
+      }
+
+    }).catch(error => console.log('Registration failed with ' + error));
+  })
 }
