@@ -1,9 +1,17 @@
-var CACHE_NAME = 'combinify-cache-v3';
-
+const CACHE_NAME = 'combinify-cache-v3';
+const OFFLINE_URL = ['../offline.html']
 // Install the service worker
 self.addEventListener('install', event => {
 
   console.log('Installed Service Worker')
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+    .then(function(cache) {
+      console.log('Opened cache');
+      return cache.addAll(OFFLINE_URL);
+    }).then(() => self.skipWaiting())
+  );
 
 });
 
@@ -26,39 +34,40 @@ self.addEventListener('activate', event => {
 });
 
 
-self.addEventListener('fetch', event =>{
+self.addEventListener('fetch', event => {
+  // Only want to call event.respondWith() if this is a navigation request
+  if (event.request.mode === "navigate") {
+    // Cache each page upon visiting
+    event.respondWith(
+      caches.match(event.request)
+      .then((response) => {
 
-  // Cache each page upon visiting
-  event.respondWith(
-    caches.match(event.request)
-    .then((response) => {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
 
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
+        return fetch(event.request).then(
+          response => {
+            // Check if we received a valid response
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response
+            }
 
-      return fetch(event.request)
-              .then(
-                response => {
-                  // Check if we received a valid response
-                  if(!response || response.status !== 200 || response.type !== 'basic') {
-                    return response;
-                  }
+            // Clone the response
+            var responseToCache = response.clone();
 
-                  // Clone the response
-                  var responseToCache = response.clone();
+            // Cache the page
+            caches.open(CACHE_NAME)
+            .then((cache) => {
+              cache.put(event.request, responseToCache);
+            })
 
-                  // Cache the page
-                  caches.open(CACHE_NAME)
-                  .then((cache) => {
-                    cache.put(event.request, responseToCache);
-                  });
-
-                  return response;
-                }
-              )
-    })
-  );
+            return response;
+          }
+        )
+      }).catch(err => caches.match(OFFLINE_URL).then(res => res))
+    );
+  }
 });
 
