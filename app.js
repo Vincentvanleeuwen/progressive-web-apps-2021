@@ -8,6 +8,7 @@
  */
 const firebase = require('firebase/app');
 require('firebase/database');
+const compression = require('compression');
 const express = require('express'); // Express web server framework
 const handlebars = require('express-handlebars');
 const session = require('express-session')
@@ -50,6 +51,7 @@ app.engine('hbs', handlebars({
 }))
 app.set('trust proxy', 1)
 app.use(express.static(__dirname + '/public'))
+  .use(compression())
   .use(cors())
   .use(cookieParser())
   .use(express.json())
