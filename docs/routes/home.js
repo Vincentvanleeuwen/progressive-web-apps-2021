@@ -3,7 +3,6 @@ require('firebase/database');
 const router = require('express').Router();
 const request = require('request'); // "Request" library
 const { deleteColumns, restructureData } = require('../helpers/transformData')
-const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
 router.get('/', (req, res) => {
   // Send back to login if no token.
@@ -49,7 +48,7 @@ router.post('/', (req, res) => {
   playlistRef.on('value', (snap) => {
 
     if(snap.val()) {
-      res.redirect(`/playlists/${makeUrlSafe(req.body.searchPlaylist)}`)
+      res.redirect(`/playlists/${req.body.searchPlaylist}`)
     } else {
       res.redirect(`/home`)
     }

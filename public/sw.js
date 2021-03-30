@@ -5,7 +5,7 @@ const CACHE_URLS = [
   '/',
   '/offline'
 ]
-const DENY_URL = ['/home']
+const DENY_URL = ['/home', '/login', '/']
 // Install the service worker
 self.addEventListener('install', event => {
 
