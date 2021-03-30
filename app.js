@@ -50,6 +50,7 @@ app.set('views', __dirname + '/docs/views')
 app.engine('hbs', handlebars({
   extname: 'hbs',
   defaultLayout: 'main',
+  helpers: require('./docs/config/handlebarsHelpers')
 }))
 app.set('trust proxy', 1)
 app.use(express.static(__dirname + '/public'))

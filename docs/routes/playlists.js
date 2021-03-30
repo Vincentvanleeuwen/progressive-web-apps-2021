@@ -3,6 +3,7 @@ require('firebase/database');
 const router = require('express').Router();
 const request = require('request'); // "Request" library
 const { deleteColumns, restructureSongs } = require('../helpers/transformData')
+const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
 const globalRef = firebase.database().ref('playlists/')
 globalRef.on('value', function (snap) {
@@ -14,7 +15,7 @@ globalRef.on('value', function (snap) {
   let playlistKeys = Object.keys(playlists)
   playlistKeys.forEach(playlist => {
     console.log(playlist)
-    router.get(`/${playlist}`, (req, res) => {
+    router.get(`/${makeUrlSafe(playlist)}`, (req, res) => {
       console.log(req.session.user)
       if(!req.session.user) {
         res.redirect('/')
@@ -65,7 +66,7 @@ globalRef.on('value', function (snap) {
       })
     })
 
-    router.post(`/${playlist}`, (req, res) => {
+    router.post(`/${makeUrlSafe(playlist)}`, (req, res) => {
       if(!req.session.access_token) {
         res.redirect('/')
         return
@@ -94,7 +95,7 @@ globalRef.on('value', function (snap) {
       request.post(options, function(error, response, body) {
 
         if(!body.error) {
-          res.redirect(`/playlists/${req.session.playlistName}`)
+          res.redirect(`/playlists/${makeUrlSafe(req.session.playlistName)}`)
         }
       });
     })

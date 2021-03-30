@@ -3,6 +3,7 @@ require('firebase/database');
 const router = require('express').Router();
 const request = require('request'); // "Request" library
 const { deleteColumns, restructureData } = require('../helpers/transformData')
+const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
 router.get('/', (req, res) => {
   // Send back to login if no token.
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
     url: 'https://api.spotify.com/v1/me',
     headers: { 'Authorization': 'Bearer ' + req.session.access_token },
     json: true
-  };
+  }
 
   // use the access token to access the Spotify Web API
   request.get(options, function(error, response, body) {
@@ -37,8 +38,8 @@ router.get('/', (req, res) => {
       name: req.session.user.name,
       img: req.session.user.image
     })
-  });
-});
+  })
+})
 
 router.post('/', (req, res) => {
 
@@ -48,7 +49,7 @@ router.post('/', (req, res) => {
   playlistRef.on('value', (snap) => {
 
     if(snap.val()) {
-      res.redirect(`/playlists/${req.body.searchPlaylist}`)
+      res.redirect(`/playlists/${makeUrlSafe(req.body.searchPlaylist)}`)
     } else {
       res.redirect(`/home`)
     }
