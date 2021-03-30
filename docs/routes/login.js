@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
   res.render('login', {
     layout: 'main'
   });
-
 });
 
 router.get('/login', (req, res) => {

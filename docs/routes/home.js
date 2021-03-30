@@ -1,9 +1,9 @@
 const firebase = require('firebase/app');
 require('firebase/database');
 const router = require('express').Router();
-const querystring = require('querystring');
 const request = require('request'); // "Request" library
 const { deleteColumns, restructureData } = require('../helpers/transformData')
+
 router.get('/', (req, res) => {
 
   if(!req.session.access_token) {
@@ -35,9 +35,7 @@ router.get('/', (req, res) => {
       name: req.session.user.name,
       img: req.session.user.image
     })
-
   });
-
 });
 
 router.post('/', (req, res) => {
@@ -51,9 +49,6 @@ router.post('/', (req, res) => {
       res.redirect(`/home`)
     }
   })
-
 })
-
-
 
 module.exports = router;

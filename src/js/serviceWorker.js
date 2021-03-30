@@ -13,8 +13,8 @@ butInstall.addEventListener('click', async () => {
   // Log the result
   const result = await promptEvent.userChoice;
   console.log('👍', 'userChoice', result);
-  // Reset the deferred prompt variable, since
-  // prompt() can only be called once.
+
+  // Reset the deferred prompt variable, since prompt() can only be called once.
   window.deferredPrompt = null;
   // Hide the install button.
   divInstall.classList.toggle('hidden', true);

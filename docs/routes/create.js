@@ -1,7 +1,6 @@
 const firebase = require('firebase/app');
 require('firebase/database');
 const router = require('express').Router();
-const querystring = require('querystring');
 const request = require('request'); // "Request" library
 
 router.get('/', (req, res) => {
@@ -49,15 +48,9 @@ router.post('/', (req, res) => {
       req.session.playlistId = body.id
       req.session.playlistName = req.body.playlist
       req.session.save()
-
       res.redirect(`/playlists/${req.body.playlist}`)
     }
-
   });
-
-
 })
-
-
 
 module.exports = router;

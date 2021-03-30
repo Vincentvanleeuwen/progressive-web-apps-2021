@@ -13,7 +13,11 @@
     "prebuild:css": "rimraf \"public/css\"",
     "prebuild:js": "rimraf \"public/js\"",
     "build:css": "node ./build_scripts/build-css.js",
-    "build:js": "node ./build_scripts/build-js.js"
+    "build:js": "node ./build_scripts/build-js.js",
+    "watch:js": "nodemon --watch ./src/js -e js ./build_scripts/build-js.js",
+    "watch:css": "nodemon --watch ./src/css -e css ./build_scripts/build-css.js",
+    "watch:server": "nodemon --watch public --watch docs app.js",
+    "watch": "echo y | concurrently \"npm:watch:js\" \"npm:watch:css\" \"npm:watch:server\""
   },
   "repository": {
     "type": "git",
@@ -33,6 +37,7 @@
   },
   "homepage": "https://github.com/Vincentvanleeuwen/progressive-web-apps-2021#readme",
   "devDependencies": {
+    "concurrently": "^6.0.0",
     "dotenv": "^8.2.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

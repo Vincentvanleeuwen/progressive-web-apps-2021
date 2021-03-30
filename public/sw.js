@@ -1,5 +1,6 @@
 const CACHE_NAME = 'combinify-cache-v3';
 const OFFLINE_URL = ['../offline.html']
+
 // Install the service worker
 self.addEventListener('install', event => {
 
@@ -15,6 +16,7 @@ self.addEventListener('install', event => {
 
 });
 
+// Activate the service worker
 self.addEventListener('activate', event => {
 
   // Tell the active service worker to take control of the page immediately.
@@ -33,7 +35,7 @@ self.addEventListener('activate', event => {
   )
 });
 
-
+// Make the service worker fetch pages
 self.addEventListener('fetch', event => {
   // Only want to call event.respondWith() if this is a navigation request
   if (event.request.mode === "navigate") {
@@ -55,7 +57,7 @@ self.addEventListener('fetch', event => {
             }
 
             // Clone the response
-            var responseToCache = response.clone();
+            const responseToCache = response.clone();
 
             // Cache the page
             caches.open(CACHE_NAME)
