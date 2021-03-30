@@ -92,6 +92,13 @@ const options = {
 
 Check out the [Reference](https://developer.spotify.com/documentation/web-api/reference/) page for further explanation on what links to get what data from.
 
+## Critical Render Path
+
+To make sure my application is running smoothly I'm using lighthouse to check my application for speed/accessibility problems.
+
+![Lighthouse-before](https://github.com/Vincentvanleeuwen/progressive-web-apps-2021/blob/master/images/lighthouse-before.png?raw=true)
+
+![Lighthouse-after](https://github.com/Vincentvanleeuwen/progressive-web-apps-2021/blob/master/images/lighthouse-after.png?raw=true)
 
 ## Checklist
 - [x] Connect to the spotify API
