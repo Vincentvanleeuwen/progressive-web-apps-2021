@@ -7,13 +7,11 @@ const stateKey = 'spotify_auth_state';
 // Spotify API callback
 router.get('/', function(req, res) {
 
-  // your application requests refresh and access tokens
-  // after checking the state parameter
-
   const code = req.query.code || null;
   const state = req.query.state || null;
   const storedState = req.cookies ? req.cookies[stateKey] : null;
 
+  // Spotify Auth
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
@@ -34,7 +32,7 @@ router.get('/', function(req, res) {
       },
       json: true
     };
-
+    // If success, get access token and refresh token and redirect to /home.
     request.post(authOptions, function(error, response, body) {
 
       if (error || response.statusCode !== 200) {

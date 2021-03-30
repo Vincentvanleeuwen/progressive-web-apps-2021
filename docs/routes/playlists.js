@@ -33,7 +33,7 @@ globalRef.on('value', function (snap) {
             'Content-Type': 'application/json'
           },
           json: true
-        };
+        }
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
@@ -60,8 +60,8 @@ globalRef.on('value', function (snap) {
             playlistTitle: playlist,
             playlistUrl: snapVals.url,
             songs: restructureSongs(filtered)
-          });
-        });
+          })
+        })
       })
     })
 
