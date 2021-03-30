@@ -18,6 +18,10 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
+  if(!req.session.user.id) {
+    res.redirect('/error')
+  }
+
   const playlistRef = firebase.database().ref('playlists/').child(`${req.body.playlist}`)
 
   const options = {

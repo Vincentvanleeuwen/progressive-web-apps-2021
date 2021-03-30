@@ -41,6 +41,8 @@ const login = require('./docs/routes/login');
 const callback = require('./docs/routes/callback');
 const create = require('./docs/routes/create');
 const playlists = require('./docs/routes/playlists');
+const error = require('./docs/routes/error');
+const offline = require('./docs/routes/offline');
 
 // Assign handlebars as the view engine
 app.set('view engine', 'hbs');
@@ -67,6 +69,8 @@ app.use(express.static(__dirname + '/public'))
   .use('/callback', callback)
   .use('/create', create)
   .use('/playlists', playlists)
+  .use('/offline', offline)
+  .use('/*', error)
 
 console.log(`Listening on ${port}`);
 app.listen(port);
