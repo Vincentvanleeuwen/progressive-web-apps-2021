@@ -2,7 +2,7 @@
 ### Progressive Web Apps @cmda-minor-web 2020 - 2021
 
 
-https://combinify.netlify.app/
+https://combinify-node.herokuapp.com
 
 Combinify is a playlist creating application that lets you create a combined playlist of multiple people their top songs.
 This application will be made without the use of Javascript Frameworks.
@@ -117,4 +117,12 @@ When adding the meta tag viewport you have to allow the user to be able to zoom 
 - [ ] Add songs to a playlist
 - [ ] Delete songs from a playlist
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+## Sources
 
+[The one and only Jonah Gold](https://github.com/theonejonahgold)
+
+[Wouter](https://github.com/Mokerstier) 
+
+[Ben](https://github.com/benl95)
+
+[Roeland] (https://github.com/roelandvs)
