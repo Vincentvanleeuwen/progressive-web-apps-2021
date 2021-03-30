@@ -1,5 +1,4 @@
 const CACHE_NAME = 'combinify-cache-v6';
-const OFFLINE_URL = ['../offline.html']
 const CACHE_URLS = [
   '/css/index.css',
   '/js/bundle.min.js',
@@ -47,7 +46,6 @@ self.addEventListener('fetch', event => {
   }
 
   // Cache each page upon visiting
-  console.log(event.request)
   event.respondWith(
     caches.match(event.request)
     .then((response) => {
