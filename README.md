@@ -98,6 +98,11 @@ To make sure my application is running smoothly I'm using lighthouse to check my
 
 ![Lighthouse-before](https://github.com/Vincentvanleeuwen/progressive-web-apps-2021/blob/master/images/lighthouse-before.png?raw=true)
 
+First off there's an error where my style and scripts are blocking the rendering path. To fix this I will be changing the way I load in fonts from CDN to locally imported. I'll also preload my css and javascript. Hopefully this will boost op the speed site.
+ 
+We can also see that the accessibility isn't at the level we'd want it to be.
+When adding the meta tag viewport you have to allow the user to be able to zoom in. If you don't allow this it'll damage the accessibility of the website.
+
 ![Lighthouse-after](https://github.com/Vincentvanleeuwen/progressive-web-apps-2021/blob/master/images/lighthouse-after.png?raw=true)
 
 ## Checklist
@@ -107,6 +112,7 @@ To make sure my application is running smoothly I'm using lighthouse to check my
 - [x] Add songs to the playlist
 - [x] Set playlist name
 - [x] Set max amount of songs
+- [x] Visit other peoples lists
 - [ ] Add more profiles
 - [ ] Add songs to a playlist
 - [ ] Delete songs from a playlist
