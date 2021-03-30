@@ -39,10 +39,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
+  console.log(req.body.searchPlaylist)
+  
   const playlistRef = firebase.database().ref('playlists/').child(`${req.body.searchPlaylist}`)
   playlistRef.on('value', (snap) => {
-    console.log(snap.val())
+
     if(snap.val()) {
       res.redirect(`/playlists/${req.body.searchPlaylist}`)
     } else {
