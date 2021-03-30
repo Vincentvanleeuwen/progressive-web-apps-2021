@@ -1,7 +1,8 @@
-const firebase = require('firebase/app');
-require('firebase/database');
-const router = require('express').Router();
-const request = require('request'); // "Request" library
+const firebase = require('firebase/app')
+require('firebase/database')
+const router = require('express').Router()
+const request = require('request')
+const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
 router.get('/', (req, res) => {
   // Failed to log in! Send back
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
     name: req.session.user.name,
     img: req.session.user.image
   })
-});
+})
 
 router.post('/', (req, res) => {
 
@@ -41,7 +42,7 @@ router.post('/', (req, res) => {
       "collaborative": true
     }),
     json: true
-  };
+  }
   // use the access token to access the Spotify Web API
   request.post(options, function(error, response, body) {
     // Push the new playlist to firebase
@@ -57,9 +58,9 @@ router.post('/', (req, res) => {
       req.session.playlistId = body.id
       req.session.playlistName = req.body.playlist
       req.session.save()
-      res.redirect(`/playlists/${req.body.playlist}`)
+      res.redirect(`/playlists/${makeUrlSafe(req.body.playlist)}`)
     }
-  });
+  })
 })
 
 module.exports = router;

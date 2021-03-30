@@ -1,7 +1,7 @@
-const router = require('express').Router();
-const { randomString } = require('../utils/generateRandomString');
-const stateKey = 'spotify_auth_state';
-const querystring = require('querystring');
+const router = require('express').Router()
+const { randomString } = require('../utils/generateRandomString')
+const stateKey = 'spotify_auth_state'
+const querystring = require('querystring')
 
 router.get('/', (req, res) => {
 
@@ -18,7 +18,7 @@ router.get('/login', (req, res) => {
 
   // Set the spotify scopes
   const scope = 'user-read-email user-read-private user-library-read user-top-read playlist-read-collaborative' +
-    ' playlist-modify-public playlist-modify-private';
+    ' playlist-modify-public playlist-modify-private'
 
   // Redirect to spotify authorization api
   res.redirect('https://accounts.spotify.com/authorize?' +
@@ -31,4 +31,4 @@ router.get('/login', (req, res) => {
     }))
 })
 
-module.exports = router;
+module.exports = router

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'combinify-cache-v6';
+const CACHE_NAME = 'combinify-cache-v6'
 const CACHE_URLS = [
   '/css/index.css',
   '/js/bundle.min.js',
@@ -12,8 +12,8 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
     .then((cache) =>{
-      console.log('Opened cache');
-      return cache.addAll(CACHE_URLS);
+      console.log('Opened cache')
+      return cache.addAll(CACHE_URLS)
     }).then(() => self.skipWaiting()).catch(err=> console.log(err))
   )
 });
@@ -53,7 +53,7 @@ self.addEventListener('fetch', event => {
 
       // Cache hit - return response
       if (response) {
-        return response;
+        return response
       }
 
       return fetch(event.request).then(
@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
           }
 
           // Clone the response
-          const responseToCache = response.clone();
+          const responseToCache = response.clone()
 
           // Cache the page
           if(!event.request.url.includes('/playlists/')) {
@@ -76,7 +76,7 @@ self.addEventListener('fetch', event => {
             })
           }
 
-          return response;
+          return response
         }
       ).catch(() => caches.match('/offline'))
     })

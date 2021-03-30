@@ -1,7 +1,7 @@
-const firebase = require('firebase/app');
-require('firebase/database');
-const router = require('express').Router();
-const request = require('request'); // "Request" library
+const firebase = require('firebase/app')
+require('firebase/database')
+const router = require('express').Router()
+const request = require('request')
 const { deleteColumns, restructureSongs } = require('../helpers/transformData')
 const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
@@ -89,7 +89,7 @@ globalRef.on('value', function (snap) {
           'Content-Type': 'application/json'
         },
         json: true
-      };
+      }
       console.log(options)
       // use the access token to access the Spotify Web API
       request.post(options, function(error, response, body) {
@@ -97,7 +97,7 @@ globalRef.on('value', function (snap) {
         if(!body.error) {
           res.redirect(`/playlists/${makeUrlSafe(req.session.playlistName)}`)
         }
-      });
+      })
     })
   })
 })

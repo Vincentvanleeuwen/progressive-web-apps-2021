@@ -1,22 +1,22 @@
-const router = require('express').Router();
+const router = require('express').Router()
 const request = require('request'); // "Request" library
-const querystring = require('querystring');
+const querystring = require('querystring')
 
-const stateKey = 'spotify_auth_state';
+const stateKey = 'spotify_auth_state'
 
 // Spotify API callback
 router.get('/', function(req, res) {
 
-  const code = req.query.code || null;
-  const state = req.query.state || null;
-  const storedState = req.cookies ? req.cookies[stateKey] : null;
+  const code = req.query.code || null
+  const state = req.query.state || null
+  const storedState = req.cookies ? req.cookies[stateKey] : null
 
   // Spotify Auth
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
         error: 'state_mismatch'
-      }));
+      }))
   } else {
     res.clearCookie(stateKey);
     const authOptions = {
@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
         'Content-Type': 'application/x-www-urlencoded'
       },
       json: true
-    };
+    }
     // If success, get access token and refresh token and redirect to /home.
     request.post(authOptions, function(error, response, body) {
 
@@ -48,10 +48,10 @@ router.get('/', function(req, res) {
       req.session.refresh_token = body.refresh_token
       req.session.save();
 
-      res.redirect('/home' );
+      res.redirect('/home' )
 
-    });
+    })
   }
-});
+})
 
-module.exports = router;
+module.exports = router

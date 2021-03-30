@@ -1,21 +1,21 @@
-const divInstall = document.getElementById('installContainer');
-const butInstall = document.getElementById('butInstall');
+const divInstall = document.getElementById('installContainer')
+const butInstall = document.getElementById('butInstall')
 
 butInstall.addEventListener('click', async () => {
-  console.log('👍', 'butInstall-clicked');
-  const promptEvent = window.deferredPrompt;
+  console.log('👍', 'butInstall-clicked')
+  const promptEvent = window.deferredPrompt
   if (!promptEvent) {
     // The deferred prompt isn't available.
-    return;
+    return
   }
   // Show the install prompt.
-  promptEvent.prompt();
+  promptEvent.prompt()
   // Log the result
-  const result = await promptEvent.userChoice;
-  console.log('👍', 'userChoice', result);
+  const result = await promptEvent.userChoice
+  console.log('👍', 'userChoice', result)
 
   // Reset the deferred prompt variable, since prompt() can only be called once.
-  window.deferredPrompt = null;
+  window.deferredPrompt = null
   // Hide the install button.
   divInstall.classList.toggle('hidden', true);
 });
@@ -32,11 +32,11 @@ if ('serviceWorker' in navigator) {
     .then(reg => {
 
       if(reg.installing) {
-        console.log('Service worker installing');
+        console.log('Service worker installing')
       } else if(reg.waiting) {
-        console.log('Service worker installed');
+        console.log('Service worker installed')
       } else if(reg.active) {
-        console.log('Service worker active');
+        console.log('Service worker active')
       }
 
     }).catch(error => console.log('Registration failed with ' + error));
