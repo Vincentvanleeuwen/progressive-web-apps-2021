@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express').Router()
 
 router.get('/', (req, res) => {
   // Send to the login screen
@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // Send to the login screen
-  res.redirect('/');
+  res.redirect('/')
 
 });
-module.exports = router;
+module.exports = router

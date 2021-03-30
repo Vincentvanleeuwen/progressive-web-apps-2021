@@ -1,7 +1,7 @@
-const firebase = require('firebase/app');
-require('firebase/database');
-const router = require('express').Router();
-const request = require('request'); // "Request" library
+const firebase = require('firebase/app')
+require('firebase/database')
+const router = require('express').Router()
+const request = require('request')
 const { deleteColumns, restructureData } = require('../helpers/transformData')
 
 router.get('/', (req, res) => {
@@ -55,4 +55,4 @@ router.post('/', (req, res) => {
   })
 })
 
-module.exports = router;
+module.exports = router
