@@ -57,11 +57,11 @@ label[for="copy-text"], #copy-text {
   margin: .5em 0;
 }
 [class^="songs"] div div p:first-of-type {
-  font-family: "Raleway", sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 700;
 }
 [class^="songs"] div div p:last-of-type{
-  font-family: "Raleway", sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 300;
   font-style: italic;
 }

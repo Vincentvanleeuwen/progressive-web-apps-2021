@@ -1,3 +1,24 @@
+/* General */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@font-face {
+  font-family: Comfortaa;
+  font-weight: 300;
+  src: url('../fonts/Comfortaa-Light.ttf');
+}
+@font-face {
+  font-family: Raleway;
+  font-weight: 300;
+  font-style: italic;
+  src: url('../fonts/Raleway-LightItalic.ttf');
+}
+@font-face {
+  font-family: Raleway;
+  font-weight: 700;
+  src: url('../fonts/Raleway-Bold.ttf');
+}
+
+
 body {
   margin: 0;
   padding: 0 1em 5em 1em;
@@ -41,7 +62,7 @@ nav {
   border: 0;
   color: var(--light-color);
   cursor: pointer;
-  font-family: "Raleway", sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: clamp(.8rem, 2.5vw, 1.5rem);
   font-weight: 700;
 }
