@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 
   // use the access token to access the Spotify Web API
   request.get(options, function(error, response, body) {
+
     let filtered = deleteColumns(body);
     let restructured = restructureData(filtered)
 
@@ -40,7 +41,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log(req.body.searchPlaylist)
-  
+  console.log('hello?')
   const playlistRef = firebase.database().ref('playlists/').child(`${req.body.searchPlaylist}`)
   playlistRef.on('value', (snap) => {
 

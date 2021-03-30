@@ -1,6 +1,6 @@
 const CACHE_NAME = 'combinify-cache-v3';
 const OFFLINE_URL = ['../offline.html']
-
+const DENY_URL = ['/home']
 // Install the service worker
 self.addEventListener('install', event => {
 
@@ -37,8 +37,14 @@ self.addEventListener('activate', event => {
 
 // Make the service worker fetch pages
 self.addEventListener('fetch', event => {
+
   // Only want to call event.respondWith() if this is a navigation request
   if (event.request.mode === "navigate") {
+    const url = new URL(event.request.url)
+    if(DENY_URL.includes(url.pathname)) {
+      event.respondWith(fetch(event.request))
+      return;
+    }
     // Cache each page upon visiting
     event.respondWith(
       caches.match(event.request)

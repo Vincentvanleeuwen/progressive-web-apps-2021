@@ -13,9 +13,9 @@ globalRef.on('value', function (snap) {
 
   let playlistKeys = Object.keys(playlists)
   playlistKeys.forEach(playlist => {
-
+    console.log(playlist)
     router.get(`/${playlist}`, (req, res) => {
-
+      console.log(req.session.user)
       if(!req.session.user) {
         res.redirect('/')
         return

@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
       }));
   } else {
     res.clearCookie(stateKey);
-    var authOptions = {
+    const authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
