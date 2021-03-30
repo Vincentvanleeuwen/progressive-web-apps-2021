@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
       req.session.playlistId = body.id
       req.session.playlistName = req.body.playlist
       req.session.save()
-      res.redirect(`/playlists/${makeUrlSafe(req.body.playlist)}`)
+      res.redirect(`/playlists/${req.body.playlist}`)
     }
   })
 })
