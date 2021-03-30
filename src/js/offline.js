@@ -1,6 +1,4 @@
 const offlinePlaylists = document.querySelector('.offline-playlists')
-
-// Create an URL for each cached playlist on the /offline page
 if(offlinePlaylists) {
   caches.open('playlist-cache').then(cache => {
     return cache.keys()

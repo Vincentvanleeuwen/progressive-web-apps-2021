@@ -7,16 +7,15 @@ router.get('/', (req, res) => {
 
   res.render('login', {
     layout: 'main'
-  })
-})
+  });
+});
 
 router.get('/login', (req, res) => {
 
-  // Create a state so we can verify it later
-  let state = randomString(16)
-  res.cookie(stateKey, state)
+  let state = randomString(16);
+  res.cookie(stateKey, state);
 
-  // Set the spotify scopes
+  // your application requests authorization
   const scope = 'user-read-email user-read-private user-library-read user-top-read playlist-read-collaborative' +
     ' playlist-modify-public playlist-modify-private'
 
@@ -28,7 +27,7 @@ router.get('/login', (req, res) => {
       scope: scope,
       redirect_uri: process.env.REDIRECT_URI,
       state: state
-    }))
-})
+    }));
+});
 
 module.exports = router

@@ -2,7 +2,6 @@ if ('serviceWorker' in navigator) {
   cachePlaylist()
 }
 
-// Background Sync
 async function cachePlaylist() {
   const pathname = window.location.pathname
 

@@ -5,7 +5,7 @@ const request = require('request')
 const { deleteColumns, restructureData } = require('../helpers/transformData')
 
 router.get('/', (req, res) => {
-  // Send back to login if no token.
+
   if(!req.session.access_token) {
     res.redirect('/')
     return
@@ -19,12 +19,11 @@ router.get('/', (req, res) => {
 
   // use the access token to access the Spotify Web API
   request.get(options, function(error, response, body) {
-    // Filter the spotify profile data
+
     let filtered = deleteColumns(body);
     let restructured = restructureData(filtered)
 
     console.log('restructured', restructured)
-    // Save the User
     req.session.user = {
       id: restructured[0].id,
       name: restructured[0].name,
@@ -41,10 +40,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-
-  // Search for a playlist
+  console.log(req.body.searchPlaylist)
+  console.log('hello?')
   const playlistRef = firebase.database().ref('playlists/').child(`${req.body.searchPlaylist}`)
-
   playlistRef.on('value', (snap) => {
 
     if(snap.val()) {

@@ -40,7 +40,6 @@ self.addEventListener('activate', event => {
 // Make the service worker fetch pages
 self.addEventListener('fetch', event => {
 
-  // Check if its a get request, if its a post request it can't be done.
   if(event.request.method !== 'GET') {
     event.respondWith(fetch(event.request).catch(() => caches.match('/offline')))
     return
