@@ -114,7 +114,7 @@ When adding the meta tag viewport you have to allow the user to be able to zoom 
 - [x] Set max amount of songs
 - [x] Visit other peoples lists
 - [ ] Add more profiles
-- [ ] Add songs to a playlist
+- [x] Add songs to a playlist
 - [ ] Delete songs from a playlist
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## Sources
