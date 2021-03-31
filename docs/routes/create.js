@@ -2,7 +2,6 @@ const firebase = require('firebase/app')
 require('firebase/database')
 const router = require('express').Router()
 const request = require('request')
-const { makeUrlSafe } = require('../helpers/makeUrlSafe')
 
 router.get('/', (req, res) => {
   if(!req.session.user) {
